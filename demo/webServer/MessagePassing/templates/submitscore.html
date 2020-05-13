@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Submit Score</title>
+</header>
+<body>
+	{% block content %}
+	<div class = "formwrapper">
+	  	<h1 class = "title">{{ title }}</h1>
+	  	<form method = "POST" action = "" id = "form">
+	  		{{ form.csrf_token }}
+	  		{{ form.pid }}
+	      	<div class = "form-field">{{ form.name.label }} {{ form.name }}</div>
+	      	<div class = "form-field">{{ form.score.label }} {{ form.score }}</div>
+	      	{{ form.submit }}
+	  </form>
+	</div>
+	{% endblock %}
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+	<script src="{{ url_for('static', filename='message.js') }}"></script>
+</body>
+</html>

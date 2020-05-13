@@ -1,0 +1,33 @@
+{
+	"author": "Kary H.",
+	"name": "Search Multiple Tabs (Message Passing)",
+	"version": "1.0.0",
+	"description": "Search from Multiple Tabs",
+	"permissions": [
+		"tabs",
+		"<all_urls>"
+	],
+	"background": {
+		"scripts": ["js/background.js"]
+	},
+    "browser_action": {
+		"default_icon": {
+			"16": "icons/a16.png",
+			"32": "icons/a32.png",
+			"48": "icons/a48.png",
+			"128": "icons/a128.png"
+		}
+	},
+	"icons": {
+		"16": "icons/a16.png",
+		"32": "icons/a32.png",
+		"48": "icons/a48.png",
+		"128": "icons/a128.png"
+	},
+	"content_scripts": [{
+		"matches": ["<all_urls>"],
+        "js": ["js/searchkeyword.js"],
+        "run_at": "document_end"
+    }],
+	"manifest_version": 2
+}
