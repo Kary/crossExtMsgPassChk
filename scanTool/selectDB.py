@@ -77,8 +77,8 @@ def selectNotEsprimaJsResult(extFolderName):
 # ----- selectNotEsprimaJsResult -----
 
 
-# ----- select10ExtForManualAnalysis -----
-def select10ExtForManualAnalysis():
+# ----- selectExtForManualAnalysis -----
+def selectExtForManualAnalysis():
 	dbConn = MySQLdb.connect(mysqlInfo['host'], mysqlInfo['user'], mysqlInfo['passwd'], mysqlInfo['db'])
 	dbCursor = dbConn.cursor()
 	selectSql = 'SELECT extFolderName FROM ExtResult WHERE manualCheck = %s;'
@@ -89,17 +89,17 @@ def select10ExtForManualAnalysis():
 # ----- select10ExtForManualAnalysis -----
 
 
-# ----- random10ExtForManualAnalysis -----
-def random10ExtForManualAnalysis():
-	dbResult = select10ExtForManualAnalysis()
+# ----- randomExtForManualAnalysis -----
+def randomExtForManualAnalysis(num):
+	dbResult = selectExtForManualAnalysis()
 	allNum = list(range(0, len(dbResult)))
 	random.shuffle(allNum)
 	
 	extFolderNames = []
-	for i in range(0, 10):
+	for i in range(0, num):
 		extFolderNames.append(dbResult[allNum[i]][0])
 	return extFolderNames
-# ----- random10ExtForManualAnalysis -----
+# ----- randomExtForManualAnalysis -----
 
 
 # ----- numExtForManualAnalysis -----

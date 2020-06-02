@@ -1,5 +1,6 @@
 from lxml import etree
 import os
+import pyparsing
 
 # Kary
 import commonCode
@@ -34,6 +35,8 @@ def getJSsForEachHtml(html, verFolder, allJSs, allHtmls, ecInlineScript, devInli
 
 		htmlTree = htmlData.getroot()
 
+		jsComment = pyparsing.nestedExpr('/*', '*/').suppress() | pyparsing.dblSlashComment.suppress()
+				
 		if htmlTree != None:
 			scriptTags = htmlData.findall('.//script')
 			for t in scriptTags:
@@ -64,25 +67,27 @@ def getJSsForEachHtml(html, verFolder, allJSs, allHtmls, ecInlineScript, devInli
 						commonCode.updateTable(allJSs, js, s)
 
 				inlineScriptType = t.get('type')
-				if inlineScriptType == None:
-					inlineScript = t.text
-					if inlineScript != None:
-						if inlineScript.strip() != '':
-							for s in scriptTypes:
-								if s == 'ec':
-									ecInlineScript = ecInlineScript + inlineScript
-								elif s == 'dev':
-									devInlineScript = devInlineScript + inlineScript
+				if inlineScriptType == None:	
+					if t.text != None:
+						if t.text.strip() != '':
+							inlineScript = jsComment.transformString(t.text)
+							if inlineScript.strip() != '':
+								for s in scriptTypes:
+									if s == 'ec':
+										ecInlineScript = ecInlineScript + inlineScript
+									elif s == 'dev':
+										devInlineScript = devInlineScript + inlineScript
 
 				elif 'javascript' in inlineScriptType:
-					inlineScript = t.text
-					if inlineScript != None:
-						if inlineScript.strip() != '':
-							for s in scriptTypes:
-								if s == 'ec':
-									ecInlineScript = ecInlineScript + inlineScript
-								elif s == 'dev':
-									devInlineScript = devInlineScript + inlineScript
+					if t.text != None:
+						if t.text.strip() != '':
+							inlineScript = jsComment.transformString(t.text)
+							if inlineScript.strip() != '':
+								for s in scriptTypes:
+									if s == 'ec':
+										ecInlineScript = ecInlineScript + inlineScript
+									elif s == 'dev':
+										devInlineScript = devInlineScript + inlineScript
 
 	return allJSs, ecInlineScript, devInlineScript
 # ----- getJSsForEachHtml -----

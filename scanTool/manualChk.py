@@ -174,14 +174,15 @@ def printDetail(extId, num):
 				for d in descTags:
 					desc = d.get('content')
 
-				print(commonCode.yellow('No.:'), num, commonCode.yellow('Id:'), extId, commonCode.yellow('Version No.:'), ver, commonCode.yellow('Name:'), name)
-				print(commonCode.yellow('Desc'), desc)
+				print(commonCode.yellow('No.:'), num, commonCode.yellow('Id:'), extId, commonCode.yellow('Version No.:'), ver)
+				print(commonCode.yellow('Extension Name:'), name)
+				print(commonCode.yellow('Description:'), desc)
 			print(commonCode.yellow('URL:'), url)
 
 		else:
 			print(commonCode.yellow('No.:'), num, commonCode.yellow('Id:'), extId, commonCode.yellow('Version No.:'), ver)
 		
-		print(commonCode.yellow('Version Folder'), str(num).zfill(6) + '_' + extId + '/' + ver)
+		print(commonCode.yellow('Version Folder:'), str(num).zfill(6) + '_' + extId + '/' + ver)
 
 
 	if len(extResult) > 0:
@@ -393,8 +394,8 @@ def printDetail(extId, num):
 # ----- main -----
 def main():
 	if len(sys.argv) == 1: 
-		print(commonCode.green('Random 10 Extensions for Manual Analysis:'))
-		extFolderNames = selectDB.random10ExtForManualAnalysis()
+		print(commonCode.green('Random Extensions for Manual Analysis:'))
+		extFolderNames = selectDB.randomExtForManualAnalysis(10)
 		for e in extFolderNames:
 			print(e)
 		print(commonCode.green('Number of Extensions Pending for Manual Analysis:'), selectDB.numExtForManualAnalysis()[0][0])

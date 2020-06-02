@@ -104,7 +104,7 @@ def addInfoManifest(manifestPath):
 	permissions = ''
 	if 'permissions' in manifestJsonData:
 		for i in range(0, len(manifestJsonData['permissions'])):
-			permissions = permissions + manifestJsonData['permissions'][i] + ' '
+			permissions = permissions + str(manifestJsonData['permissions'][i]) + ' '
 			if manifestJsonData['permissions'][i] == 'management':
 				managementAPI = True
 		print(commonCode.cyan('Permissions:'), permissions)
@@ -113,8 +113,8 @@ def addInfoManifest(manifestPath):
 	# optional_permissions field
 	if 'optional_permissions' in manifestJsonData:
 		for i in range(0, len(manifestJsonData['optional_permissions'])):
-			optPermissions = optPermissions + manifestJsonData['optional_permissions'][i] + ' '
-		print(commonCode.cyan('Optional Permission'), optPermissions)
+			optPermissions = optPermissions + str(manifestJsonData['optional_permissions'][i]) + ' '
+		print(commonCode.cyan('Optional Permission:'), optPermissions)
 
 	senders = ''
 	# externally_connectable manifest key with ids property
@@ -124,7 +124,7 @@ def addInfoManifest(manifestPath):
 				senders = senders + manifestJsonData['externally_connectable']['ids'][i] + ' '
 			print(commonCode.cyan('Allow Msg from Other Extensions:'), senders)
 	else:
-		print(commonCode.cyan('Allow Msg from Other Extensions'))
+		print(commonCode.cyan('Allow Msg from Other Extensions:'))
 
 	# web_accessible_resources
 	if 'web_accessible_resources' in manifestJsonData:

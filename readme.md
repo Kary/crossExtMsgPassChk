@@ -1,8 +1,6 @@
-
 <!-- Control + Option + o: OmniMarkupPreviewer - View in browser-->
 # Collusion Attack by Chrome Extensions
-*(for partial fulfillment of the requirements for the admission to the degree of Master of Science in Computer Science)*
-#### Author: HUI Hiu Yi, Kary
+
 ## 1. Motivation
 - Benign-but-bugy or malicious extensions have great impact to users.
     + [A critical vulnerability of Evernote Web Clipper was reported on June 2019 which allowed attackers to hijack Chrome and stole user private data.](https://thehackernews.com/2019/06/evernote-extension-hacking.html)
