@@ -2,6 +2,18 @@
 
 USE crossExtMsgPassChk;
 
+DROP TABLE IF EXISTS ExtDownload;
+
+CREATE TABLE `ExtDownload` (
+  `num` int NOT NULL AUTO_INCREMENT,
+  `seqNo` int DEFAULT NULL,
+  `dl` tinyint(1) NOT NULL,
+  `verno_error` varchar(255) NOT NULL,
+  `extId` varchar(32) DEFAULT NULL,
+  `url` varchar(500) NOT NULL,
+  PRIMARY KEY (`num`)
+);
+
 DROP TABLE IF EXISTS ExtResult;
 
 CREATE TABLE `ExtResult` (
