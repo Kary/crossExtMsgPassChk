@@ -375,19 +375,19 @@ def printDetail(extId, num):
 			if not commonCode.Search4Keyword(extFolder, 'management'):
 				print('Not Found')
 
-		# # ----- Domain List -----
-		# if len(domainList) > 0:
-		# 	print('')
-		# 	print(commonCode.yellow('Domain List'))
-		# 	for dl in domainList:
-		# 		print(commonCode.cyan(dl[0]), dl[1])
+		# ----- Domain List -----
+		if len(domainList) > 0:
+			print('')
+			print(commonCode.yellow('Domain List'))
+			for dl in domainList:
+				print(commonCode.cyan(dl[0]), dl[1])
 
-		# # ----- Url List -----
-		# if len(urlList) > 0:
-		# 	print('')
-		# 	print(commonCode.yellow('Url List'))
-		# 	for ul in urlList:
-		# 		print(commonCode.cyan(ul[0]), ul[1]) 
+		# ----- Url List -----
+		if len(urlList) > 0:
+			print('')
+			print(commonCode.yellow('Url List'))
+			for ul in urlList:
+				print(commonCode.cyan(ul[0]), ul[1]) 
 # ----- printDetail -----
 
 
